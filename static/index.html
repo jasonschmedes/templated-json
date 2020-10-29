@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Templated JSON Test</title>
+        <script defer src="/dist/templated-json.js" type="text/javascript"></script>
+    </head>
+    <body>
+      <p id="output">Hello World</p>
+      <script>
+      window.addEventListener('DOMContentLoaded', function() {
+          const TemplatedJSON = templatedJSON.TemplatedJSON
+          const t = new TemplatedJSON()
+          const out = t.hello()
+          document.getElementById('output').innerHTML = out
+      })
+      </script>
+    </body>
+</html>

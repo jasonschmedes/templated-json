@@ -1,0 +1,59 @@
+{
+  "name": "templated-json",
+  "version": "0.0.1",
+  "description": "Update JSON structures according to a template.",
+  "main": "dist/templated-json.js",
+  "homepage": "https://github.com/jasonschmedes/templated-json.git",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jasonschmedes/templated-json.git"
+  },
+  "files": [
+    "cli.js",
+    "src/",
+    "dist/"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^26.0.15",
+    "@typescript-eslint/eslint-plugin": "^4.6.0",
+    "@typescript-eslint/parser": "^4.6.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^5.0.0",
+    "eslint": "^7.12.1",
+    "jest": "^26.6.1",
+    "sass": "^1.27.0",
+    "sass-lint": "^1.13.1",
+    "style-loader": "^2.0.0",
+    "ts-jest": "^26.4.3",
+    "ts-loader": "^8.0.7",
+    "typescript": "^4.0.5",
+    "webpack": "^5.3.1",
+    "webpack-bundle-analyzer": "^3.9.0",
+    "webpack-cli": "^4.1.0",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.2.0"
+  },
+  "bin": {
+    "templated-json": "cli.js"
+  },
+  "scripts": {
+    "test": "npm run test:lint && npm run test:jest",
+    "test:lint": "npm run test:lint:js && npm run test:lint:css",
+    "test:lint:js": "eslint --ext .ts .",
+    "test:lint:css": "sass-lint src/**/*.scss",
+    "test:jest": "jest",
+    "test:jest:watch": "jest --watch",
+    "test:jest:coverage": "jest --coverage",
+    "clean": "rm -rf dist/ node_modules/",
+    "clean-install": "npm run clean && npm install",
+    "start": "docker-compose up --build -d && npm run start:dev",
+    "start:dev": "npm run dev",
+    "start:prod": "npm run build && rm -rf ./static/dist && cp -r ./dist ./static/dist",
+    "dev": "webpack --config webpack.dev.js",
+    "analyze": "webpack --config webpack.analyze.js",
+    "build": "webpack --config webpack.prod.js",
+    "watch": "npm run build --watch",
+    "dist": "npm test && npm run build"
+  }
+}
